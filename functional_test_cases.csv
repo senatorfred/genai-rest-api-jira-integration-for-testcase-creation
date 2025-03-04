@@ -1,0 +1,62 @@
+Test Case ID,Steps,Test Data,Description,Expected Result
+1. **Penetration Testing Steps:**
+
+   a. **OWASP A1:2017 - Injection**
+
+      i. Verify that all user inputs are properly sanitized and/or validated to prevent injection attacks such as SQL, NoSQL, XPath, LDAP, Command Injection, etc. (Test Case ID: PT-INJ-001)
+         Steps: Attempt to inject malicious characters into the input fields provided for Start Date, End Date, Interest Rate, Mgt Fee, Facility amount, Facility limit, and Tenor. Expected Result: The input should be properly sanitized/validated, preventing any successful injection attacks.
+
+   b. **OWASP A3 - Cross-Site Scripting (XSS)**
+
+      i. Verify that the application does not allow any user input to be rendered within the context of another user's browser without proper encoding or validation (Test Case ID: PT-XSS-001)
+         Steps: Attempt to inject malicious JavaScript code into the Disbursement Transit Account Number, Loan Arrangement ID, and Confirmation fields. Expected Result: The input should be properly encoded or sanitized, preventing any successful XSS attacks.
+
+   c. **OWASP A5 - Broken Access Control**
+
+      i. Verify that the application enforces appropriate access controls to ensure that users cannot access data, functions, and resources they are not authorized for (Test Case ID: PT-ACC-001)
+         Steps: Attempt to access other user's information by manipulating URL parameters or session variables. Expected Result: Access should be denied when attempting unauthorized actions.
+
+   d. **OWASP A6 - Security Misconfiguration**
+
+      i. Identify any misconfigurations that may expose sensitive information or provide attackers with opportunities to gain unauthorized access (Test Case ID: PT-MISC-001)
+         Steps: Review the configuration of web servers, databases, API gateways, etc., for any potential vulnerabilities. Expected Result: No critical misconfigurations are found.
+
+   e. **OWASP A7 - Cross-Site Request Forgery (CSRF)**
+
+      i. Verify that the application has CSRF protection to prevent attackers from exploiting unintended actions on a user's behalf (Test Case ID: PT-CSRF-001)
+         Steps: Attempt to perform sensitive operations by forging a malicious request using another user's session. Expected Result: The application should have CSRF protection, and the forged request should be rejected or properly handled.
+
+2. **Functional Testing Steps:**
+
+   a. **Test Case ID: QA-IDF-001**
+         Steps:
+           1. Log in to the application with valid credentials.
+           2. Navigate to the new IDF Loan API page.
+           3. Fill out all required fields, including Start Date, End Date, Interest Rate, Mgt Fee, Facility amount, Facility limit, and Tenor.
+           4. Click on "Submit" to call the API.
+         Test Data: Random valid values for each field.
+         Test Case Description: Verify that the IDF Loan API can be successfully called with the provided input data.
+         Expected Result: The system should return a successful response and generate the Disbursement Transit Account Number, Loan Arrangement ID, and Confirmation of Successful Funds Transfer to the Vendor.
+
+   b. **Test Case ID: QA-IDF-002**
+         Steps:
+           1. Repeat steps 1-3 from Test Case ID: QA-IDF-001, but this time fill out the fields with invalid values.
+         Test Data: Invalid or out of range values for each field.
+         Test Case Description: Verify that the system does not accept incorrect input data and provides appropriate error messages.
+         Expected Result: The system should reject the request and provide clear error messages indicating which fields are invalid.
+
+   c. **Test Case ID: QA-IDF-003**
+         Steps:
+           1. Attempt to call the IDF Loan API without filling out any fields.
+         Test Data: Empty input for all fields.
+         Test Case Description: Verify that the system requires all required fields to be filled before submitting the request.
+         Expected Result: The system should reject the request and provide a message indicating which fields are missing.
+
+   d. **Test Case ID: QA-IDF-004**
+         Steps:
+           1. Log in with valid credentials and navigate to the new IDF Loan API page.
+           2. Fill out all required fields, including Start Date, End Date, Interest Rate, Mgt Fee, Facility amount, Facility limit, and Tenor.
+           3. Submit the request but do not wait for the response before navigating away from the page or closing the browser session.
+         Test Data: Random valid values for each field.
+         Test Case Description: Verify that the system properly handles requests that are incomplete or abandoned by the user.
+         Expected Result: The system should retain the request and allow the user to complete it at a later time.

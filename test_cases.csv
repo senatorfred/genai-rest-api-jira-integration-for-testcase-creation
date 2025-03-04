@@ -1,0 +1,77 @@
+Test Case ID,Steps,Test Data,Description,Expected Result
+ Here are the test cases for the acceptance criteria provided:
+
+1. **Test Case ID:** TC_IDF_001
+   **Steps:**
+   1. Navigate to the new IDF Loan API endpoint in the test environment.
+   2. Call the API using valid Start Date, End Date, Interest Rate, Mgt Fee, Facility amount, Facility limit, and Tenor values.
+   3. Verify that the API call is successful (HTTP status code 200).
+   **Test Data:** Valid values for all required fields.
+   **Test Case Description:** Verify that the IDF loan endpoint accepts valid input and returns a success status.
+   **Expected Result:** Successful API call with HTTP status code 200.
+
+2. **Test Case ID:** TC_IDF_002
+   **Steps:**
+   1. Call the API using an invalid Start Date (either future date or past date beyond allowed tenor).
+   2. Verify that the API call is not successful (HTTP status code 400).
+   **Test Data:** Invalid Start Date.
+   **Test Case Description:** Verify that the IDF loan endpoint rejects an invalid start date.
+   **Expected Result:** Unsuccessful API call with HTTP status code 400.
+
+3. **Test Case ID:** TC_IDF_003
+   **Steps:**
+   1. Call the API using an invalid End Date (either future date or past date beyond allowed tenor).
+   2. Verify that the API call is not successful (HTTP status code 400).
+   **Test Data:** Invalid End Date.
+   **Test Case Description:** Verify that the IDF loan endpoint rejects an invalid end date.
+   **Expected Result:** Unsuccessful API call with HTTP status code 400.
+
+4. **Test Case ID:** TC_IDF_004
+   **Steps:**
+   1. Call the API using an invalid Interest Rate (less than 0 or greater than a defined maximum value).
+   2. Verify that the API call is not successful (HTTP status code 400).
+   **Test Data:** Invalid Interest Rate.
+   **Test Case Description:** Verify that the IDF loan endpoint rejects an invalid interest rate.
+   **Expected Result:** Unsuccessful API call with HTTP status code 400.
+
+5. **Test Case ID:** TC_IDF_005
+   **Steps:**
+   1. Call the API using an invalid Mgt Fee (less than 0 or greater than a defined maximum value).
+   2. Verify that the API call is not successful (HTTP status code 400).
+   **Test Data:** Invalid Mgt Fee.
+   **Test Case Description:** Verify that the IDF loan endpoint rejects an invalid management fee.
+   **Expected Result:** Unsuccessful API call with HTTP status code 400.
+
+6. **Test Case ID:** TC_IDF_006
+   **Steps:**
+   1. Call the API using a Facility amount greater than the defined maximum value (N1bn).
+   2. Verify that the API call is not successful (HTTP status code 400).
+   **Test Data:** Invalid Facility amount.
+   **Test Case Description:** Verify that the IDF loan endpoint rejects an invalid facility amount.
+   **Expected Result:** Unsuccessful API call with HTTP status code 400.
+
+7. **Test Case ID:** TC_IDF_007
+   **Steps:**
+   1. Call the API using a Facility limit greater than the defined maximum value (N1bn).
+   2. Verify that the API call is not successful (HTTP status code 400).
+   **Test Data:** Invalid Facility limit.
+   **Test Case Description:** Verify that the IDF loan endpoint rejects an invalid facility limit.
+   **Expected Result:** Unsuccessful API call with HTTP status code 400.
+
+8. **Test Case ID:** TC_IDF_008
+   **Steps:**
+   1. Call the API using a Tenor greater than the allowed maximum value (120 days).
+   2. Verify that the API call is not successful (HTTP status code 400).
+   **Test Data:** Invalid Tenor.
+   **Test Case Description:** Verify that the IDF loan endpoint rejects an invalid tenor.
+   **Expected Result:** Unsuccessful API call with HTTP status code 400.
+
+9. **Test Case ID:** TC_IDF_009
+   **Steps:**
+   1. Call the API using valid input and store the response (Disbursement Transit Account Number, Loan Arrangement ID, and Confirmation of Successful Funds Transfer to the Vendor).
+   2. Verify that the disbursement transit account number is generated.
+   3. Verify that the loan arrangement ID is generated.
+   4. Verify that the confirmation of successful funds transfer to the vendor is present.
+   **Test Data:** Valid input.
+   **Test Case Description:** Verify that the API returns the expected fields upon success.
+   **Expected Result:** Successful API call with HTTP status code 200, and the disbursement transit account number, loan arrangement ID, and confirmation of successful funds transfer to the vendor are present in the response.
